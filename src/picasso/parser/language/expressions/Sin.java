@@ -2,7 +2,13 @@ package picasso.parser.language.expressions;
 
 import picasso.parser.language.ExpressionTreeNode;
 
-
+/**
+ * Represents the Sin function in the Picasso language.
+ * 
+ * 
+ * @author Luis Coronel
+ * 
+ */
 public class Sin extends UnaryFunction{
 	
 	public Sin(ExpressionTreeNode param) {
