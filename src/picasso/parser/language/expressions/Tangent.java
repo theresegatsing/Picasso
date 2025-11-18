@@ -2,6 +2,13 @@ package picasso.parser.language.expressions;
 
 import picasso.parser.language.ExpressionTreeNode;
 
+/**
+ * Represents the tan function in the Picasso language.
+ * 
+ * 
+ * @author Therese Elvira Mombou Gatsing
+ * 
+ */
 public class Tangent extends UnaryFunction {
 	
 	

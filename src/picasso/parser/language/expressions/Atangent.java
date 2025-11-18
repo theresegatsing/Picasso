@@ -2,6 +2,13 @@ package picasso.parser.language.expressions;
 
 import picasso.parser.language.ExpressionTreeNode;
 
+/**
+ * Represents the atan function in the Picasso language.
+ * 
+ * 
+ * @author Therese Elvira Mombou Gatsing
+ * 
+ */
 public class Atangent extends UnaryFunction{
 	
 	public Atangent(ExpressionTreeNode param) {
