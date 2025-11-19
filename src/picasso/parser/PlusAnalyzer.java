@@ -14,4 +14,17 @@ import picasso.parser.tokens.Token;
  * 
  */
 public class PlusAnalyzer extends BinaryOperatorAnalyzer {
+
+	@Override
+	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
+		tokens.pop(); 
+
+		ExpressionTreeNode paramETNLeft = SemanticAnalyzer.getInstance().generateExpressionTree(
+				tokens);
+		ExpressionTreeNode paramETNRight = SemanticAnalyzer.getInstance().generateExpressionTree(
+				tokens);
+				
+		return new Plus(paramETNLeft, paramETNRight);
+	}
+
 }
