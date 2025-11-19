@@ -108,7 +108,7 @@ public class TanTests {
 	@Test
 	public void testToString() {
 		ExpressionTreeNode tan = new Tan(new Y());
-		assertEquals("Tangent(y)", tan.toString());
+		assertEquals("Tan(y)", tan.toString());
 	}
 
 	@Test
