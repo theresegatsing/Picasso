@@ -1,7 +1,6 @@
 package picasso.parser.language.expressions;
 
 import picasso.parser.language.ExpressionTreeNode;
-import picasso.model.RGBColor;
 
 /**
  * Represents the rgbToYCrCb in Picasso language
