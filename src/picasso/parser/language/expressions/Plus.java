@@ -20,11 +20,10 @@ public class Plus extends BinaryOperator {
 	public Plus(ExpressionTreeNode left, ExpressionTreeNode right) {
 		super(left, right);
 	}
-	/** //TODO: change the comments
-	 * Evaluates this expression at the given x,y point by evaluating the floor of
-	 * the function's parameter.
+	/**
+	 * Evaluates this expression at the given x,y point by adding the parameters.
 	 * 
-	 * @return the color from evaluating the floor of the expression's parameter
+	 * @return the color from adding the expression's parameters
 	 */
 	@Override
 	public RGBColor evaluate(double x, double y) {

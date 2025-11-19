@@ -19,9 +19,9 @@ public class PlusAnalyzer extends BinaryOperatorAnalyzer {
 	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
 		tokens.pop(); 
 
-		ExpressionTreeNode paramETNLeft = SemanticAnalyzer.getInstance().generateExpressionTree(
-				tokens);
 		ExpressionTreeNode paramETNRight = SemanticAnalyzer.getInstance().generateExpressionTree(
+			tokens);
+		ExpressionTreeNode paramETNLeft = SemanticAnalyzer.getInstance().generateExpressionTree(
 				tokens);
 				
 		return new Plus(paramETNLeft, paramETNRight);
