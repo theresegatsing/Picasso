@@ -16,6 +16,7 @@ import picasso.parser.SemanticAnalyzer;
 import picasso.parser.Tokenizer;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.Floor;
+import picasso.parser.language.expressions.Plus;
 import picasso.parser.language.expressions.RGBColor;
 import picasso.parser.language.expressions.X;
 import picasso.parser.language.expressions.Y;
