@@ -4,7 +4,6 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,14 +14,6 @@ import picasso.parser.Tokenizer;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.RGBColor;
 import picasso.parser.language.expressions.RgbToYCrCb;
-import picasso.parser.language.expressions.Floor;
-import picasso.parser.language.expressions.X;
-import picasso.parser.language.expressions.Y;
-import picasso.parser.tokens.IdentifierToken;
-import picasso.parser.tokens.Token;
-import picasso.parser.tokens.chars.LeftParenToken;
-import picasso.parser.tokens.chars.RightParenToken;
-import picasso.parser.tokens.functions.RgbToYCrCbToken;
 
 /**
  * Tests for the RgbToYCrCb function.
@@ -79,32 +70,32 @@ public class RgbToYCrCbTests {
 	}
 	@Test
 	public void testRgbToYCrCbPureRed() {
-		//White  : [1,1,1]
+		//Red  : [1,-1,-1]
 				ExpressionTreeNode color = new RGBColor(1,-1, -1);
 				RgbToYCrCb converter = new RgbToYCrCb(color);
 				RGBColor result = converter.evaluate(0,0);
 				
 				//red should have a Cr more than 0 (positive)
-				assertTrue(result.getRed() > -1.0, "Y (luma) should be positive for red");
+				assertTrue(result.getRed() > -1.0, "the Y should be positive for red");
 				assertTrue(result.getBlue() > 0.0, "Cr should be positive for red");		
 	}
 	@Test
 	public void testRgbToYCrCbPureBlue() {
-		//White  : [1,1,1]
+		//Blue  : [-1,-1,1]
 				ExpressionTreeNode color = new RGBColor(-1,-1, 1);
 				RgbToYCrCb converter = new RgbToYCrCb(color);
 				RGBColor result = converter.evaluate(0,0);
 				
 				assertTrue(result.getRed() > -1.0, "Y should be gpositive for red");
-				assertTrue(result.getGreen() > 0.0, "Cb the green channel, should be positive for blue");
+				assertTrue(result.getGreen() > 0.0, "Cb should be positive for blue");
 				}
 	@Test
 	public void testRgbToYCrCbPureGreen() {
-		// Pure green: RGB = (-1, 1, -1)
+		//  green: [-1, 1, -1]
 		ExpressionTreeNode color = new RGBColor(-1, 1, -1);
 		RgbToYCrCb converter = new RgbToYCrCb(color);
 		RGBColor result = converter.evaluate(0, 0);
-		assertTrue(result.getRed() > 0.0, "Y (should be high for green");
+		assertTrue(result.getRed() > 0.0, "Y should be high for green");
 	}
 
 
