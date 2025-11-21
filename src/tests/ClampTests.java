@@ -73,8 +73,7 @@ class ClampTests {
 		double[] tests = { -.7, -.00001, .000001, .5 };
 
 		for (double testVal : tests) {
-			testVal = 2.5;
-			double clampOfTestVal = 1.0; // because 2.5 clamps to 1
+			double clampOfTestVal = Math.clamp(testVal, -1, 1); // clamp each test to range [-1, 1]
 			assertEquals(new RGBColor(clampOfTestVal, clampOfTestVal, clampOfTestVal), myTree.evaluate(testVal, -1));
 			assertEquals(new RGBColor(clampOfTestVal, clampOfTestVal, clampOfTestVal),
 					myTree.evaluate(testVal, testVal));
