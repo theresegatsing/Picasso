@@ -73,14 +73,10 @@ public class Evaluator implements Command<Pixmap> {
 		// objects directly (as in the commented statement below).
 		String expressionText = expressionField.getText();
 		//String test = "floor(y)";
-
 		//String test = "atan(x)";
 		//String test = "x + y";
-
 		//String test = "y";
 		//String test = "x + y";
-
-		
 
 		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
 		return expTreeGen.makeExpression(expressionText);
