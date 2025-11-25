@@ -44,12 +44,28 @@ public class ExpressionTreeGenerator {
 		// 1) if the user typed only a string like "a", we check to see if it was mapped already
 		// If so, we just reuse the stored expression tree
 		
-		if (variables.containsKey(infix)) {
+		if ( !infix.contains("=") && variables.containsKey(infix)) {
 			return variables.get(infix);
 		}
 		
 		
+		//2) If an input of the form "a = x+y" is given, we map it and store the expression tree
 		
+		int equalIndex = infix.indexOf("=");
+		
+		if (equalIndex >0) {
+			
+			String left = infix.substring(0, equalIndex);
+			String right = infix.substring(equalIndex+1);
+			
+			//Build the expression tree based on the right hand side of the expression
+			ExpressionTreeNode rightTree = makeExpression(right);
+			
+			variables.put(left, rightTree);
+			
+			return rightTree;
+			
+		}
 		
 		//3) Otherwise do the following 
 		Stack<Token> postfix = infixToPostfix(infix);
