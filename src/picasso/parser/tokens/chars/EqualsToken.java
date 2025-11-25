@@ -16,5 +16,11 @@ public class EqualsToken extends CharToken {
 	}
 	
 	
+	@Override
+    public String toString() {
+        return "EqualsToken";
+    }
+	
+	
 
 }
