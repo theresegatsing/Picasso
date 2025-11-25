@@ -1,5 +1,8 @@
 package picasso.parser;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
@@ -18,6 +21,9 @@ import picasso.parser.tokens.operations.*;
  * @author Sara Sprenkle modified for Picasso
  */
 public class ExpressionTreeGenerator {
+	
+	
+	private Map<String, ExpressionTreeNode> variables = new HashMap<>();
 
 	// TODO: Do these belong here?
 	private static final int CONSTANT = 0;
@@ -34,6 +40,18 @@ public class ExpressionTreeGenerator {
 	 *         formula.
 	 */
 	public ExpressionTreeNode makeExpression(String infix) {
+		
+		// 1) if the user typed only a string like "a", we check to see if it was mapped already
+		// If so, we just reuse the stored expression tree
+		
+		if (variables.containsKey(infix)) {
+			return variables.get(infix);
+		}
+		
+		
+		
+		
+		//3) Otherwise do the following 
 		Stack<Token> postfix = infixToPostfix(infix);
 
 		if (postfix.isEmpty()) {

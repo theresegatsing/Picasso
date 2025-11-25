@@ -1,8 +1,7 @@
 package picasso.parser.tokens.chars;
 
 import picasso.parser.language.CharConstants;
-import picasso.parser.tokens.chars.*;
-import picasso.parser.tokens.operations.*;
+
 
 /**
  * Represents the '=' character 
