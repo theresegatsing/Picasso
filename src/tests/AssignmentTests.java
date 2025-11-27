@@ -69,4 +69,21 @@ public class AssignmentTests {
 	    }
 
 
+	@Test
+	public void testAssignedVariableInExpression() {
+
+	    parser.makeExpression("sine = sin(x)");
+	    ExpressionTreeNode direct = parser.makeExpression("sin(x) + x");
+	    ExpressionTreeNode viaVar = parser.makeExpression("sine + x");
+
+	    double x = 0.2;
+	    double y = 0.0;
+
+	    RGBColor expected = direct.evaluate(x, y);
+	    RGBColor actual   = viaVar.evaluate(x, y);
+
+	    assertEquals(expected.getRed(),   actual.getRed(),   EPSILON);
+	    assertEquals(expected.getGreen(), actual.getGreen(), EPSILON);
+	    assertEquals(expected.getBlue(),  actual.getBlue(),  EPSILON);
+	}
 }
