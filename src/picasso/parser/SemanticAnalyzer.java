@@ -17,6 +17,7 @@ import picasso.parser.tokens.TokenFactory;
  * 
  * @author Robert C. Duvall
  * @author Sara Sprenkle
+ * @author Therese Elvira Mombou Gatsing 
  */
 public class SemanticAnalyzer implements SemanticAnalyzerInterface {
 
