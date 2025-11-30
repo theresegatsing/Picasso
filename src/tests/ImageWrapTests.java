@@ -118,7 +118,7 @@ public class ImageWrapTests {
 	}
 
 	@Test
-	public void testParseimageWrapExpression() {
+	public void testParseImageWrapExpression() {
 		// Test that parser creates correct imageWrap expression tree
 		ExpressionTreeNode e = parser.makeExpression("imageWrap(\"images/vortex.jpg\", x, y)");
 		assertEquals(new ImageWrap("images/vortex.jpg", new X(), new Y()), e,
