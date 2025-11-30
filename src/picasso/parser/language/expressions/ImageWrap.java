@@ -4,7 +4,7 @@ import picasso.model.Pixmap;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
- * Represents the imageWrap function - imports an image and clips it
+ * Represents the imageWrap function - imports an image and wraps it
  *
  * @author Luis Coronel
  */
