@@ -5,9 +5,9 @@ package picasso.parser.tokens.functions;
  *
  * @author Luis Coronel
  */
-public class ImageClipToken extends FunctionToken {
+public class ImageWrapToken extends FunctionToken {
 
-	public ImageClipToken() {
-		super("ImageClip Function Token");
+	public ImageWrapToken() {
+		super("ImageWrap Function Token");
 	}
 }
