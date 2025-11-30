@@ -8,7 +8,7 @@ import picasso.parser.tokens.StringToken;
 import picasso.parser.tokens.Token;
 
 /**
- * Handles parsing the imageClip function
+ * Handles parsing the ImageWrap function
  * 
  * @author Luis Coronel
  */
