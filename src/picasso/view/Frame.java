@@ -43,6 +43,7 @@ public class Frame extends JFrame {
 		// add commands to test here
 		ButtonPanel commands = new ButtonPanel(canvas);
 		commands.add("Open", new Reader());
+		commands.add("Load Expression", new ExpressionFileLoader(canvas, expression));
 		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, new Evaluator(expression)));
 		commands.add("Save", new Writer());
 
