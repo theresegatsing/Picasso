@@ -5,6 +5,7 @@ import java.util.Stack;
 
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.BinaryOperator;
+import picasso.parser.language.expressions.UnaryFunction;
 import picasso.parser.tokens.Token;
 
 /**
@@ -20,7 +21,7 @@ public class BinaryOperatorAnalyzer implements SemanticAnalyzerInterface {
 		Token topToken = tokens.pop(); 
 		Class<?> topTokenClass = topToken.getClass();
 		String topTokenName = topTokenClass.getCanonicalName();
-		String topExpressionName = topTokenName.replace("tokens", "language.expressions").replace("Token", "");
+		String topExpressionName = topTokenName.replace("tokens.operations", "language.expressions").replace("Token", "");
 
 		ExpressionTreeNode paramETNRight = SemanticAnalyzer.getInstance().generateExpressionTree(
 			tokens);
@@ -30,7 +31,9 @@ public class BinaryOperatorAnalyzer implements SemanticAnalyzerInterface {
 		BinaryOperator topExpression = null;
 
 		try {
-			topExpression = (BinaryOperator) Class.forName(topExpressionName).getDeclaredConstructor().newInstance(paramETNLeft, paramETNRight);	
+			Class<?>[] paramTypes = {ExpressionTreeNode.class, ExpressionTreeNode.class};
+			topExpression = (BinaryOperator) Class.forName(topExpressionName).getConstructor(paramTypes).newInstance(paramETNLeft, paramETNRight);
+				
 		} catch (ClassNotFoundException e) {
 			throw new ParseException(topExpression + " not found " + e);
 		} catch (InstantiationException e) {

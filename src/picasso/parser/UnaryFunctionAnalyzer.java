@@ -20,7 +20,7 @@ public class UnaryFunctionAnalyzer implements SemanticAnalyzerInterface {
 		Token topToken = tokens.pop(); 
 		Class<?> topTokenClass = topToken.getClass();
 		String topTokenName = topTokenClass.getCanonicalName();
-		String topExpressionName = topTokenName.replace("tokens", "language.expressions").replace("Token", "");
+		String topExpressionName = topTokenName.replace("tokens.functions", "language.expressions").replace("Token", "");
 
 		ExpressionTreeNode paramETN = SemanticAnalyzer.getInstance().generateExpressionTree(
 				tokens);
@@ -28,7 +28,9 @@ public class UnaryFunctionAnalyzer implements SemanticAnalyzerInterface {
 		UnaryFunction topExpression = null;
 
 		try {
-			topExpression = (UnaryFunction) Class.forName(topExpressionName).getDeclaredConstructor().newInstance(paramETN);	
+			Class<?>[] paramTypes = {ExpressionTreeNode.class};
+			topExpression = (UnaryFunction) Class.forName(topExpressionName).getConstructor(paramTypes).newInstance(paramETN);
+			
 		} catch (ClassNotFoundException e) {
 			throw new ParseException(topExpression + " not found " + e);
 		} catch (InstantiationException e) {
