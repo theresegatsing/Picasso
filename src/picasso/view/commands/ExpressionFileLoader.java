@@ -15,6 +15,7 @@ import picasso.util.ThreadedCommand;
 
 /**
  * Loads an expression from a file into the expression field and renders it.
+ * @author Abhishek Pradhan
  */
 public class ExpressionFileLoader extends FileCommand<Pixmap> {
 	private final JComponent view;
@@ -35,16 +36,18 @@ public class ExpressionFileLoader extends FileCommand<Pixmap> {
         try {
 			List<String> lines = Files.readAllLines(Paths.get(fileName));
 			StringBuilder builder = new StringBuilder();
-			for (String line : lines) {
-				String trimmed = line.trim();
-				if (trimmed.isEmpty() || trimmed.startsWith("//")) {
-					continue; // skip blank lines and comments
+				for (String line : lines) {
+					int commentStart = line.indexOf("//");
+					String withoutComment = (commentStart >= 0) ? line.substring(0, commentStart) : line;
+					String trimmed = withoutComment.trim();
+					if (trimmed.isEmpty()) {
+						continue; // skip blank lines and comments
+					}
+					if (builder.length() > 0) {
+						builder.append(' ');
+					}
+					builder.append(trimmed);
 				}
-				if (builder.length() > 0) {
-					builder.append(' ');
-				}
-				builder.append(trimmed);
-			}
 			String expr = builder.toString();
 			expressionField.setText(expr);
 			if (!expr.isEmpty()) {
