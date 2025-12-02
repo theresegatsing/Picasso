@@ -24,7 +24,7 @@ import picasso.parser.tokens.chars.CommaToken;
 import picasso.parser.tokens.functions.ImageClipToken;
 
 /**
- * Tests for the ImageClip function.
+ * Tests for the imageClip function.
  * 
  * @author Luis Coronel
  */
@@ -61,7 +61,7 @@ public class ImageClipTests {
 		assertTrue(result.getRed() >= -1.0 && result.getRed() <= 1.0, 
 				"Red channel should be between [-1, 1]");
 		assertTrue(result.getGreen() >= -1.0 && result.getGreen() <= 1.0, 
-				"Green channel should be beteween [-1, 1]");
+				"Green channel should be between [-1, 1]");
 		assertTrue(result.getBlue() >= -1.0 && result.getBlue() <= 1.0, 
 				"Blue channel should be between [-1, 1]");
 	}
@@ -75,7 +75,7 @@ public class ImageClipTests {
 		RGBColor corner1 = img.evaluate(-1.0, -1.0);
 		RGBColor corner2 = img.evaluate(1.0, 1.0);
 		
-		//shouldnt crash when we get the colors on the edges 
+		// shouldn't crash when we get the colors on the edges 
 		assertNotNull(corner1, "Should handle corner at (-1, -1)");
 		assertNotNull(corner2, "Should handle corner at (1, 1)");
 	}
@@ -96,7 +96,7 @@ public class ImageClipTests {
 		ImageClip img = new ImageClip("images/vortex.jpg", new X(), new Y());
 		String result = img.toString();
 		
-		assertTrue(result.contains("ImageClip"), "toString have 'ImageClip'");
+		assertTrue(result.contains("imageClip"), "toString have 'imageClip'");
 		assertTrue(result.contains("vortex.jpg"), "toString have filename");
 		assertTrue(result.contains("x"), "toString have the x coordinate");
 		assertTrue(result.contains("y"), "toString have the y coordinate");
@@ -104,7 +104,7 @@ public class ImageClipTests {
 
 	@Test
 	public void testTokenizeImageClipExpression() {
-		String expression = "ImageClip(\"images/vortex.jpg\", x, y)";
+		String expression = "imageClip(\"images/vortex.jpg\", x, y)";
 		List<Token> tokens = tokenizer.parseTokens(expression);
 		
 		assertEquals(new ImageClipToken(), tokens.get(0), "First token is ImageClipToken");
@@ -114,18 +114,16 @@ public class ImageClipTests {
 		assertEquals(new IdentifierToken("x"), tokens.get(4), "Fifth token is x");
 		assertEquals(new CommaToken(), tokens.get(5), "Sixth token is comma");
 		assertEquals(new IdentifierToken("y"), tokens.get(6), "Seventh token is y");
-		assertEquals(new RightParenToken(), tokens.get(7), "Last token should be parenthesis ");
+		assertEquals(new RightParenToken(), tokens.get(7), "Last token should be parenthesis");
 	}
 
 	@Test
 	public void testParseImageClipExpression() {
 		// Test that parser creates correct ImageClip expression tree
-		ExpressionTreeNode e = parser.makeExpression("ImageClip(\"images/vortex.jpg\", x, y)");
+		ExpressionTreeNode e = parser.makeExpression("imageClip(\"images/vortex.jpg\", x, y)");
 		assertEquals(new ImageClip("images/vortex.jpg", new X(), new Y()), e,
 				"The Parser should be able to create ImageClip expression tree");
 	}
-
-
 
 	@Test
 	public void testImageClipColorRange() {
