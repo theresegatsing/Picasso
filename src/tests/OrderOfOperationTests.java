@@ -53,12 +53,18 @@ public class MultiplyTests {
         // (x-y)*x
 
         ExpressionTreeNode test1 = parser.makeExpression("x + y * x");
-        ExpressionTreeNode test2 = parser.makeExpression("(x + y) * x");
-        ExpressionTreeNode test3 = parser.makeExpression("x - y * x");
-        ExpressionTreeNode test4 = parser.makeExpression("(x - y) * x");
+        ExpressionTreeNode test1Good = parser.makeExpression("x + (y * x)");
+        ExpressionTreeNode test1Bad = parser.makeExpression("(x + y) * x");
+        
+        ExpressionTreeNode test2 = parser.makeExpression("x - y * x");
+        ExpressionTreeNode test2Good = parser.makeExpression("x - (y * x)");
+        ExpressionTreeNode test2Bad = parser.makeExpression("(x - y) * x");
 
-        assertNotEquals(test1, test2);
-        assertNotEquals(test3, test4);
+        assertEquals(test1, test1Good);
+        assertNotEquals(test1, test1Bad);
+
+        assertEquals(test2, test2Good);
+        assertNotEquals(test2, test2Bad);
     }
 		
 	@Test
@@ -70,12 +76,19 @@ public class MultiplyTests {
         // (x-y)^x
 
         ExpressionTreeNode test1 = parser.makeExpression("x + y ^ x");
-        ExpressionTreeNode test2 = parser.makeExpression("(x + y) ^ x");
-        ExpressionTreeNode test3 = parser.makeExpression("x - y ^ x");
-        ExpressionTreeNode test4 = parser.makeExpression("(x - y) ^ x");
+        ExpressionTreeNode test1Good = parser.makeExpression("x + (y ^ x)");
+        ExpressionTreeNode test1Bad = parser.makeExpression("(x + y) ^ x");
+        
+        ExpressionTreeNode test2 = parser.makeExpression("x - y ^ x");
+        ExpressionTreeNode test2Good = parser.makeExpression("x - (y ^ x)");
+        ExpressionTreeNode test2Bad = parser.makeExpression("(x - y) ^ x");
 
-        assertNotEquals(test1, test2);
-        assertNotEquals(test3, test4);
+        assertEquals(test1, test1Good);
+        assertNotEquals(test1, test1Bad);
+
+        assertEquals(test2, test2Good);
+        assertNotEquals(test2, test2Bad);
+
     }
 
     @Test
@@ -87,12 +100,19 @@ public class MultiplyTests {
         // (x/y)^x
 
         ExpressionTreeNode test1 = parser.makeExpression("x * y ^ x");
-        ExpressionTreeNode test2 = parser.makeExpression("(x * y) ^ x");
-        ExpressionTreeNode test3 = parser.makeExpression("x / y ^ x");
-        ExpressionTreeNode test4 = parser.makeExpression("(x / y) ^ x");
+        ExpressionTreeNode test1Good = parser.makeExpression("x * (y ^ x)");
+        ExpressionTreeNode test1Bad = parser.makeExpression("(x * y) ^ x");
 
-        assertNotEquals(test1, test2);
-        assertNotEquals(test3, test4);
+        ExpressionTreeNode test2 = parser.makeExpression("x / y ^ x");
+        ExpressionTreeNode test2Good = parser.makeExpression("x / (y ^ x)");
+        ExpressionTreeNode test2Bad = parser.makeExpression("(x / y) ^ x");
+
+        assertEquals(test1, test1Good);
+        assertNotEquals(test1, test1Bad);
+
+        assertEquals(test2, test2Good);
+        assertNotEquals(test2, test2Bad);
+
 
     }
 
@@ -105,12 +125,60 @@ public class MultiplyTests {
         // x^(x/y)
 
         ExpressionTreeNode test1 = parser.makeExpression("x ^ x * y");
-        ExpressionTreeNode test2 = parser.makeExpression("x ^ (x * y)");
-        ExpressionTreeNode test3 = parser.makeExpression("x ^ x / y");
-        ExpressionTreeNode test4 = parser.makeExpression("x ^ (x / y)");
+        ExpressionTreeNode test1Good = parser.makeExpression("(x ^ x) * y");
+        ExpressionTreeNode test1Bad = parser.makeExpression("x ^ (x * y)");
+        
+        ExpressionTreeNode test2 = parser.makeExpression("x ^ x / y");
+        ExpressionTreeNode test2Good = parser.makeExpression("(x ^ x) / y");
+        ExpressionTreeNode test2Bad = parser.makeExpression("x ^ (x / y)");
 
-        assertNotEquals(test1, test2);
-        assertNotEquals(test3, test4);
+        assertEquals(test1, test1Good);
+        assertNotEquals(test1, test1Bad);
 
+        assertEquals(test2, test2Good);
+        assertNotEquals(test2, test2Bad);
+
+    }
+
+    @Test
+    public void testPrecedence3and3() {
+
+        // x^x^y
+        // x^(x^y)
+        // (x^x)^y
+
+        ExpressionTreeNode test1 = parser.makeExpression("x ^ x ^ y");
+        ExpressionTreeNode test1Good = parser.makeExpression("x ^ (x ^ y)");
+        ExpressionTreeNode test1Bad = parser.makeExpression("(x ^ x) ^ y");
+
+        assertEquals(test1, test1Good);
+        assertNotEquals(test1, test1Bad);
+
+    }
+
+    @Test
+    public void testPrecedence2and2() {
+
+        // x*x/y
+        // (x*x)/y
+        // x*(x/y)
+
+        // x/x*y
+        // (x/x)*y
+        // x/(x*y)
+
+        ExpressionTreeNode test1 = parser.makeExpression("x * x / y");
+        ExpressionTreeNode test1Good = parser.makeExpression("(x * x) / y");
+        ExpressionTreeNode test1Good2 = parser.makeExpression("x * (x / y)");
+
+        ExpressionTreeNode test2 = parser.makeExpression("x / x * y");
+        ExpressionTreeNode test2Good = parser.makeExpression("(x / x) * y");
+        ExpressionTreeNode test2Bad = parser.makeExpression("x / (x * y)");
+
+        assertEquals(test1, test1Good);
+        assertEquals(test1, test1Good2);
+
+        assertEquals(test2, test2Good);
+        assertNotEquals(test2, test2Bad);
     }
 }
