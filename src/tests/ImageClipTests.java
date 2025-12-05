@@ -96,7 +96,7 @@ public class ImageClipTests {
 		ImageClip img = new ImageClip("images/vortex.jpg", new X(), new Y());
 		String result = img.toString();
 		
-		assertTrue(result.contains("imageClip"), "toString have 'imageClip'");
+		assertTrue(result.contains("ImageClip"), "toString have 'imageClip'");
 		assertTrue(result.contains("vortex.jpg"), "toString have filename");
 		assertTrue(result.contains("x"), "toString have the x coordinate");
 		assertTrue(result.contains("y"), "toString have the y coordinate");
