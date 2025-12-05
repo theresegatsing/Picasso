@@ -31,7 +31,7 @@ public class Evaluator implements Command<Pixmap> {
 	private ErrorReporter errorReporter;
 	
 	/** 
-	 * Constructor for the expression (backward compatible - no error reporting)
+	 * Constructor for the expression
 	 */	
 	public Evaluator(JTextField expressionField) {
 		this.expressionField = expressionField;
@@ -116,7 +116,6 @@ public class Evaluator implements Command<Pixmap> {
 	
 	/**
 	 * Create expression tree from text field.
-	 * Throws exceptions - does not report errors to GUI.
 	 */
 	private ExpressionTreeNode createExpression() {
 		String expressionText = expressionField.getText();
