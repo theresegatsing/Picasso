@@ -13,6 +13,6 @@ public class ExponentToken extends CharToken implements OperationInterface {
 
 	@Override
 	public int orderOfOperation(){
-		return 2;
+		return 3;
 	}
 }

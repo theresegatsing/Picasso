@@ -155,7 +155,9 @@ public class ExpressionTreeGenerator {
 				 * pop o2 off the stack, onto the output queue;
 				 */
 				while (!operators.isEmpty() && !(operators.peek() instanceof LeftParenToken)
-						&& ((OperationInterface) token).orderOfOperation() <= ((OperationInterface)operators.peek()).orderOfOperation()) {
+						&& ((OperationInterface) token).orderOfOperation() <= ((OperationInterface) operators.peek()).orderOfOperation()
+						&& !(((OperationInterface) operators.peek()).orderOfOperation() == 3
+							&& ((OperationInterface) token).orderOfOperation() == 3)) {
 					postfixResult.push(operators.pop());
 				}
 
