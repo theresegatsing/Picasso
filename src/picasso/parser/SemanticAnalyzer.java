@@ -36,6 +36,14 @@ public class SemanticAnalyzer implements SemanticAnalyzerInterface {
 	
 
 
+    public void setVariables(Map<String, ExpressionTreeNode> variables) {
+        this.variables = variables;
+    }
+
+    public Map<String, ExpressionTreeNode> getVariables() {
+        return variables;
+    }
+    
     public void defineVariable(String name, ExpressionTreeNode expr) {
         if (variables == null) {
             variables = new HashMap<>();
