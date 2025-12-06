@@ -24,7 +24,8 @@ public class SemanticAnalyzer implements SemanticAnalyzerInterface {
     private Map<Class<?>, SemanticAnalyzerInterface> tokenToSemAnalyzer;
     private static SemanticAnalyzer ourInstance;
 	
-	private Map<String, ExpressionTreeNode> variables;
+    // Map to store variable definitions: variable name -> expression tree
+	private Map<String, ExpressionTreeNode> variables = new HashMap<>();
 
     private static final String PARSER_PACKAGE = "picasso.parser.";
     private static final String OPERATIONS_TOKENS_PACKAGE = PARSER_PACKAGE + "tokens.operations.";
@@ -33,13 +34,24 @@ public class SemanticAnalyzer implements SemanticAnalyzerInterface {
     private static final List<String> NON_UNARY_FUNCTIONS = 
                                     List.of("ImageClip", "ImageWrap", "PerlinBW", "PerlinColor");
 	
-	
-    public void setVariables(Map<String, ExpressionTreeNode> variables) {
-        this.variables = variables;
+
+
+    public void defineVariable(String name, ExpressionTreeNode expr) {
+        if (variables == null) {
+            variables = new HashMap<>();
+        }
+        variables.put(name, expr);
     }
 
-    public Map<String, ExpressionTreeNode> getVariables() {
-        return variables;
+    public boolean isVariableDefined(String name) {
+        return variables != null && variables.containsKey(name);
+    }
+
+    public ExpressionTreeNode getVariable(String name) {
+        if (variables == null) {
+            return null;
+        }
+        return variables.get(name);
     }
 
     /**
@@ -81,7 +93,7 @@ public class SemanticAnalyzer implements SemanticAnalyzerInterface {
         parserName = PARSER_PACKAGE + "ColorAnalyzer";
         addSemanticAnalyzerMapping(tokenName, parserName);
         
-        //String mapping
+        // String mapping
         tokenName = TOKENS_PACKAGE_NAME + "StringToken";
         parserName = PARSER_PACKAGE + "StringAnalyzer";
         addSemanticAnalyzerMapping(tokenName, parserName); 
@@ -166,6 +178,12 @@ public class SemanticAnalyzer implements SemanticAnalyzerInterface {
             String tokenName = OPERATIONS_TOKENS_PACKAGE + opName + "Token";
             addSemanticAnalyzerMapping(tokenName, parserName);
         }
+        
+        String equalTokenName = OPERATIONS_TOKENS_PACKAGE + "EqualToken";
+        String equalAnalyzerName = PARSER_PACKAGE + "EqualAnalyzer";
+        addSemanticAnalyzerMapping(equalTokenName, equalAnalyzerName);
+
+       
     }
 
     /**
@@ -190,4 +208,3 @@ public class SemanticAnalyzer implements SemanticAnalyzerInterface {
     }
 
 }
-
