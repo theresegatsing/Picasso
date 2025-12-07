@@ -31,7 +31,7 @@ public class SemanticAnalyzer implements SemanticAnalyzerInterface {
     private static final String TOKENS_PACKAGE_NAME = PARSER_PACKAGE + "tokens.";
     private static final String OPS_FILE = "conf/operations.prop";
     private static final List<String> NON_UNARY_FUNCTIONS = 
-                                    List.of("ImageClip", "ImageWrap", "PerlinBW", "PerlinColor");
+                                    List.of("ImageClip", "ImageWrap", "PerlinBW", "PerlinColor", "RandomFunction");
 	
 	
     public void setVariables(Map<String, ExpressionTreeNode> variables) {
