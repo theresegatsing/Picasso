@@ -26,7 +26,7 @@ public class PerlinColor extends ExpressionTreeNode {
 		double xVal = xResult.getRed();
 		double yVal = yResult.getRed();
 
-		// Generate Perlin noise for each color channel with different offsets
+		// Generate Perlin noise gathered from References
 		double red = ImprovedNoise.noise(xVal + 0.3, yVal + 0.3, 0);
 		double green = ImprovedNoise.noise(xVal - 0.8, yVal - 0.8, 0);
 		double blue = ImprovedNoise.noise(xVal + 0.1, yVal + 0.1, 0);

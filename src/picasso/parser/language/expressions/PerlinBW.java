@@ -20,7 +20,6 @@ public class PerlinBW extends ExpressionTreeNode {
 
 	@Override
 	public RGBColor evaluate(double x, double y) {
-		// Evaluate the coordinate expressions
 		RGBColor left = xExpr.evaluate(x, y);
 		RGBColor right = yExpr.evaluate(x, y);
 

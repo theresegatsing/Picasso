@@ -4,7 +4,7 @@ import picasso.model.Pixmap;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
- * Represents the ImageWrap function - imports an image wrap
+ * Represents the ImageWrap function - imports an image and wraps it
  *
  * @author Luis Coronel
  */
@@ -77,7 +77,7 @@ public class ImageWrap extends ExpressionTreeNode {
 		if (wrapped < 0) {
 			wrapped += 2.0;
 		}
-		// Shift back to [-1, 1]
+		// Shift back too [-1, 1]n
 		return wrapped - 1.0;
 	}
 

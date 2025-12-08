@@ -8,6 +8,6 @@ package picasso.parser.tokens.functions;
 public class PerlinColorToken extends FunctionToken {
 
 	public PerlinColorToken() {
-		super("PerlinColorToken Function Token");
+		super("PerlinColor Function Token");
 	}
 }
