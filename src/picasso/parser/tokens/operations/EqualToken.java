@@ -21,7 +21,7 @@ public class EqualToken extends CharToken implements OperationInterface {
 	
 	@Override
 	public int orderOfOperation(){
-		return 4;
+		return 0;
 	}
 	
 }
