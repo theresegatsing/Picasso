@@ -1,2 +1,7 @@
 +=Plus
 !=Negate
+-=Minus
+*=Multiply
+/=Divide
+%=Modulo
+^=Exponent
