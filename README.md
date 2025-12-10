@@ -32,3 +32,7 @@ To run Picasso, run `picasso.Main`
 ## Code Base History
 
 This code base originated as a project in a course at Duke University.  The professors realized that the code could be designed better and refactored.  This code base has some code leftover from the original version.
+
+## Extensions
+
+The iterate fractals extension is used by inputting Mandelbrot(x, y) into the GUI. To be able to view the Mandelbrot fractals in their entirety and to "zoom out" it is recommended to use mandelbrot(x + x, y + y).
