@@ -32,3 +32,10 @@ To run Picasso, run `picasso.Main`
 ## Code Base History
 
 This code base originated as a project in a course at Duke University.  The professors realized that the code could be designed better and refactored.  This code base has some code leftover from the original version.
+
+## Extensions
+
+### Animator
+- Type an expression that includes t in the input field
+Click "Evaluate"
+- The expression will automatically animate, with t varying from 0 to 1
