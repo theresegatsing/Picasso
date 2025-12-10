@@ -39,3 +39,14 @@ This code base originated as a project in a course at Duke University.  The prof
 - Type an expression that includes t in the input field
 Click "Evaluate"
 - The expression will automatically animate, with t varying from 0 to 1
+
+### Random Expressions
+
+The Random Expressions extension lets you automatically generate and display a random Picasso expression.
+
+**How to use**:
+
+1. Click the **GenerateRandomExpression** button.
+2. A random expression will appear in the input field.
+3. The expression is evaluated and drawn automatically.  
+   You can edit the expression if you want and click **Evaluate** to see the updated image.
