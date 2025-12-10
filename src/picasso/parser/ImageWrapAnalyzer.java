@@ -4,9 +4,8 @@ import java.util.Stack;
 
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.ImageWrap;
-
+import picasso.parser.language.expressions.StringValue;
 import picasso.parser.tokens.Token;
-import picasso.parser.tokens.StringToken;
 
 /**
  * Handles parsing the ImageWrap function
@@ -31,12 +30,13 @@ public class ImageWrapAnalyzer implements SemanticAnalyzerInterface {
             throw new ParseException("imageWrap requires 3 arguments but only received 2. Required: filename (string), x coordinate, and y coordinate");
         }
         
-        Token filenameToken = tokens.pop();
-        if (!(filenameToken instanceof StringToken)) {
+        ExpressionTreeNode filenameToken = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
+        
+        if (!(filenameToken instanceof StringValue)) {
             throw new ParseException("imageWrap requires 3 arguments: filename (string), x coordinate, and y coordinate");
         }
         
-        String filename = ((StringToken) filenameToken).getValue();
+        String filename = ((StringValue) filenameToken).getValue();
         return new ImageWrap(filename, xCoord, yCoord);
     }
 }
