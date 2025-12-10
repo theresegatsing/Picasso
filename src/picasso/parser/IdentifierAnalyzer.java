@@ -7,6 +7,7 @@ import java.util.Stack;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.X;
 import picasso.parser.language.expressions.Y;
+import picasso.parser.language.expressions.T;
 import picasso.parser.tokens.IdentifierToken;
 import picasso.parser.tokens.Token;
 
@@ -25,6 +26,8 @@ public class IdentifierAnalyzer implements SemanticAnalyzerInterface {
 		// We always have x and y defined.
 		idToExpression.put("x", new X());
 		idToExpression.put("y", new Y());
+		idToExpression.put("t", new T());
+
 	}
 
 	@Override
