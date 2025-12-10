@@ -45,7 +45,7 @@ public class OrderOfOperationTests {
 	}
 
 	@Test
-	public void testPrecedence1and2() {
+	public void testPrecedenceAddAndMulti() {
 
         // x+y*x
         // (x+y)*x
@@ -68,7 +68,7 @@ public class OrderOfOperationTests {
     }
 		
 	@Test
-	public void testPrecedence1and3() {
+	public void testPrecedenceAddAndExp() {
 
         // x+y^x
         // (x+y)^x
@@ -92,7 +92,7 @@ public class OrderOfOperationTests {
     }
 
     @Test
-    public void testPrecedence2and3() {
+    public void testPrecedenceMultiAndExp() {
 
         // x*y^x
         // x/y^x
@@ -117,7 +117,7 @@ public class OrderOfOperationTests {
     }
 
     @Test
-    public void testPrecedence3and2() {
+    public void testPrecedenceExpAndMulti() {
 
         // x^x*y
         // x^x/y
@@ -141,7 +141,7 @@ public class OrderOfOperationTests {
     }
 
     @Test
-    public void testPrecedence3and3() {
+    public void testPrecedenceExpAndExp() {
 
         // x^x^y
         // x^(x^y)
