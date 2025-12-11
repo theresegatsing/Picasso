@@ -70,7 +70,7 @@ public class RandomExpressionLoader extends FileCommand<Pixmap> {
             if (knownMultiArgByName.containsKey(f)) {
                 int arity = knownMultiArgByName.get(f);
                 multiArgFunctions.put(f, arity);
-            } else if ("random".equals(f) || "randomFunction".equals(f)) { 
+            } else if ("random".equals(f)) { 
                 zeroArgFunctions.add(f);
             } else {
                 unaryFunctions.add(f);
@@ -175,18 +175,20 @@ public class RandomExpressionLoader extends FileCommand<Pixmap> {
      */
     private String generateLeaf() {
         
-        int choice = rand.nextInt(4);
+        int choice = rand.nextInt(5);
 
         switch (choice) {
             case 0:
                 return "x";
             case 1:
                 return "y";
-            case 2: {
+            case 2:
+                return "t";
+            case 3: {
                 double value = -1.0 + 2.0 * rand.nextDouble();
                 return String.format("%.2f", value);
             }
-            case 3:
+            case 4:
             default:
                 return generateRandomColorLiteral();
         }

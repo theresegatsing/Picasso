@@ -67,7 +67,7 @@ The Random Expressions extension lets you automatically generate and display a r
 
 **How to use**:
 
-1. Click the **GenerateRandomExpression** button.
+1. Click the **Generate Random Expression** button.
 2. A random expression will appear in the input field.
 3. The expression is evaluated and drawn automatically.  
    You can edit the expression if you want and click **Evaluate** to see the updated image.
