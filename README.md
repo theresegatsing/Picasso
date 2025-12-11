@@ -43,3 +43,16 @@ The **Animator** extension lets you animate any mathematical expression that use
    *Example:* `sin(t) * x`
 2. Click **Evaluate** or simply press **Enter**.
 3. The expression will animate automatically for 50 frames, with `t` varying from `0` to `1`.
+
+### Iterate Fractals
+The **Mandelbrot** extension lets you create the Mandelbrot fractals
+with a given x and y.
+
+**How to use:**
+1. Enter an expression with two parameters - ideally x and y coordinates.
+   *Example 1:* `mandelbrot(x, y)` - generates classic Mandelbrot set,
+   *Example 2:* `mandelbrot(x+x, y+y)` - creates a scaled version of fractals,
+   *Example 3:* `mandelbrot(x*0.5, y*0.5)` - zooms into the fractal
+2. Click **Evaluate** or simply press **Enter**.
+3. The expression will generate detailed fractal patterns particularly
+at the boundaries.
