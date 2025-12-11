@@ -46,7 +46,7 @@ public class OrderOfOperationTests {
 	}
 
 	@Test
-	public void testPrecedence1and2() {
+	public void testPrecedenceAddAndMulti() {
 
         // x+y*x
         // (x+y)*x
@@ -69,7 +69,7 @@ public class OrderOfOperationTests {
     }
 		
 	@Test
-	public void testPrecedence1and3() {
+	public void testPrecedenceAddAndExp() {
 
         // x+y^x
         // (x+y)^x
@@ -93,7 +93,7 @@ public class OrderOfOperationTests {
     }
 
     @Test
-    public void testPrecedence2and3() {
+    public void testPrecedenceMultiAndExp() {
 
         // x*y^x
         // x/y^x
@@ -118,7 +118,7 @@ public class OrderOfOperationTests {
     }
 
     @Test
-    public void testPrecedence3and2() {
+    public void testPrecedenceExpAndMulti() {
 
         // x^x*y
         // x^x/y
@@ -142,7 +142,7 @@ public class OrderOfOperationTests {
     }
 
     @Test
-    public void testPrecedence3and3() {
+    public void testPrecedenceExpAndExp() {
 
         // x^x^y
         // x^(x^y)
@@ -225,9 +225,6 @@ public class OrderOfOperationTests {
         assertNotEquals(notWanted, parsed);
     }
     
-    
-
-    
     @Test
     public void testNegateWithAllPrecedenceLevelsEvaluation() {
         ExpressionTreeNode parsed   = parser.makeExpression("!x + y * x ^ y");
@@ -243,7 +240,6 @@ public class OrderOfOperationTests {
         assertEquals(expectedVal.getGreen(), parsedVal.getGreen(), EPSILON);
         assertEquals(expectedVal.getBlue(),  parsedVal.getBlue(),  EPSILON);
     }
-    
     
     @Test
     public void testPrecedenceAddAndModulo() {
@@ -265,7 +261,6 @@ public class OrderOfOperationTests {
         assertNotEquals(rightAssoc, parsed);
     }
     
-    
     @Test
     public void testAllThreePrecedenceLevels() {
         ExpressionTreeNode parsed   = parser.makeExpression("x + y * x ^ y");
@@ -277,6 +272,4 @@ public class OrderOfOperationTests {
         assertNotEquals(wrong1, parsed);
         assertNotEquals(wrong2, parsed);
     }
-    
-    
 }
