@@ -45,7 +45,7 @@ public class OrderOfOperationTests {
 	}
 
 	@Test
-	public void testPrecedenceAddAndMulti() {
+	public void testPrecedence1and2() {
 
         // x+y*x
         // (x+y)*x
@@ -68,7 +68,7 @@ public class OrderOfOperationTests {
     }
 		
 	@Test
-	public void testPrecedenceAddAndExp() {
+	public void testPrecedence1and3() {
 
         // x+y^x
         // (x+y)^x
@@ -92,7 +92,7 @@ public class OrderOfOperationTests {
     }
 
     @Test
-    public void testPrecedenceMultiAndExp() {
+    public void testPrecedence2and3() {
 
         // x*y^x
         // x/y^x
@@ -117,7 +117,7 @@ public class OrderOfOperationTests {
     }
 
     @Test
-    public void testPrecedenceExpAndMulti() {
+    public void testPrecedence3and2() {
 
         // x^x*y
         // x^x/y
@@ -141,7 +141,7 @@ public class OrderOfOperationTests {
     }
 
     @Test
-    public void testPrecedenceExpAndExp() {
+    public void testPrecedence3and3() {
 
         // x^x^y
         // x^(x^y)
@@ -156,4 +156,29 @@ public class OrderOfOperationTests {
 
     }
 
+    @Test
+    public void testPrecedence2and2() {
+
+        // x*x/y
+        // (x*x)/y
+        // x*(x/y)
+
+        // x/x*y
+        // (x/x)*y
+        // x/(x*y)
+
+        ExpressionTreeNode test1 = parser.makeExpression("x * x / y");
+        ExpressionTreeNode test1Good = parser.makeExpression("(x * x) / y");
+        ExpressionTreeNode test1Good2 = parser.makeExpression("x * (x / y)");
+
+        ExpressionTreeNode test2 = parser.makeExpression("x / x * y");
+        ExpressionTreeNode test2Good = parser.makeExpression("(x / x) * y");
+        ExpressionTreeNode test2Bad = parser.makeExpression("x / (x * y)");
+
+        assertEquals(test1, test1Good);
+        assertEquals(test1, test1Good2);
+
+        assertEquals(test2, test2Good);
+        assertNotEquals(test2, test2Bad);
+    }
 }

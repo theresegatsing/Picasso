@@ -2,7 +2,6 @@ package picasso.parser.tokens.operations;
 
 import picasso.parser.language.CharConstants;
 import picasso.parser.tokens.chars.CharToken;
-import picasso.parser.OperatorPrecedence;
 
 /**
  * Represents the multiply sign token
@@ -14,6 +13,6 @@ public class MultiplyToken extends CharToken implements OperationInterface {
 
 	@Override
 	public int orderOfOperation(){
-		return OperatorPrecedence.MULTIPLICATIVE;
+		return 2;
 	}
 }

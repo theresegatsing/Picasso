@@ -22,7 +22,7 @@ public class PerlinBWAnalyzer implements SemanticAnalyzerInterface {
         ExpressionTreeNode yExpr = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
         
         if (tokens.isEmpty()) {
-            throw new ParseException("perlinBW requires 2 arguments");
+            throw new ParseException("perlinColor requires 2 arguments");
         }
         
         ExpressionTreeNode xExpr = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
