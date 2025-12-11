@@ -62,14 +62,15 @@ public class RandomExpressionLoader extends FileCommand<Pixmap> {
                 "perlinColor", 2,
                 "perlinBW",    2,
                 "imageWrap",   3,
-                "imageClip",   3
+                "imageClip",   3,
+                "mandelbrot",  2  
         );
 
         for (String f : allFunctions) {
             if (knownMultiArgByName.containsKey(f)) {
                 int arity = knownMultiArgByName.get(f);
                 multiArgFunctions.put(f, arity);
-            } else if ("random".equals(f)) {
+            } else if ("random".equals(f) || "randomFunction".equals(f)) {  // FIX THIS
                 zeroArgFunctions.add(f);
             } else {
                 unaryFunctions.add(f);
