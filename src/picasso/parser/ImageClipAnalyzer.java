@@ -4,8 +4,8 @@ import java.util.Stack;
 
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.ImageClip;
+import picasso.parser.language.expressions.StringValue;
 import picasso.parser.tokens.Token;
-import picasso.parser.tokens.StringToken;
 
 /**
  * Handles parsing the ImageClip function
@@ -13,10 +13,9 @@ import picasso.parser.tokens.StringToken;
  * @author Luis Coronel
  */
 public class ImageClipAnalyzer implements SemanticAnalyzerInterface {
-
     @Override
     public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
-        tokens.pop();
+        tokens.pop(); // Remove function token
         
         ExpressionTreeNode yCoord = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
         
@@ -30,12 +29,13 @@ public class ImageClipAnalyzer implements SemanticAnalyzerInterface {
             throw new ParseException("imageClip requires 3 arguments but only received 2. Required: filename (string), x coordinate, and y coordinate");
         }
         
-        Token filenameToken = tokens.pop();
-        if (!(filenameToken instanceof StringToken)) {
+        ExpressionTreeNode filenameExpr = SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
+        
+        if (!(filenameExpr instanceof StringValue)) {
             throw new ParseException("imageClip requires 3 arguments: filename (string), x coordinate, and y coordinate");
         }
         
-        String filename = ((StringToken) filenameToken).getValue();
+        String filename = ((StringValue) filenameExpr).getValue();
         return new ImageClip(filename, xCoord, yCoord);
     }
 }

@@ -17,6 +17,12 @@ public class StringAnalyzer implements SemanticAnalyzerInterface {
 	@Override
 	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
 		StringToken token = (StringToken) tokens.pop();
-		return new StringValue(token.getValue());
+		String value = token.getValue();
+		
+		if (!value.startsWith("images/") && !value.startsWith("/")) {
+			value = "images/" + value;
+		}
+		return new StringValue(value);
+		
 	}
 }
