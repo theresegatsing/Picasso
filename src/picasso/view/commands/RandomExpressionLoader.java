@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import picasso.model.Pixmap;
 import picasso.parser.language.BuiltinFunctionsReader;
 import picasso.util.FileCommand;
+import picasso.util.ErrorReporter;
 
 /**
  * Loads and evaluates a randomly generated Picasso expression.
@@ -25,6 +26,7 @@ public class RandomExpressionLoader extends FileCommand<Pixmap> {
     private final JComponent view;
     private final JTextField expressionField;
     private final Random rand = new Random();
+    private ErrorReporter errorReporter;
 
    
     private static final int MAX_DEPTH = 10;
@@ -107,7 +109,7 @@ public class RandomExpressionLoader extends FileCommand<Pixmap> {
         String randomExpr = generateTopLevelExpression();
         expressionField.setText(randomExpr);
 
-        Evaluator evaluator = new Evaluator(expressionField);
+        Evaluator evaluator = new Evaluator(expressionField, errorReporter);
         evaluator.execute(target);
     }
 
