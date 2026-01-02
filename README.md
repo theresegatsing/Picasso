@@ -17,6 +17,10 @@ as your application grows, you may need to refactor.
 
 See the specification for Picasso on the course web site.
 
+## Demo
+
+<video width="630" height="300" src="https://user-images.githubusercontent.com/.../video.mp4" controls></video>
+
 ## Running Picasso
 
 To run Picasso, run `picasso.Main`
