@@ -19,7 +19,7 @@ See the specification for Picasso on the course web site.
 
 ## Demo
 
-<video width="630" height="300" src="https://user-images.githubusercontent.com/.../video.mp4" controls></video>
+<video width="630" height="300" src="Picasso Demo.mp4" controls></video>
 
 ## Running Picasso
 
