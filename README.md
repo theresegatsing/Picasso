@@ -19,7 +19,8 @@ See the specification for Picasso on the course web site.
 
 ## Demo
 
-<video width="630" height="300" src="Picasso Demo.gif" controls></video>
+<img src="Picasso Demo.gif" width="630" height="300" alt="Picasso Demo">
+
 
 ## Running Picasso
 
